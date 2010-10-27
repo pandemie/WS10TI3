@@ -1,0 +1,53 @@
+1. Aufgabe: Begriffe 
+   
+   Instruktion Set: Unter einem instruction set versteht man die
+   Gesammtheit der elementaren Befehle, die einem Prozessor zur
+   Verfügung stehen.
+   
+   Interrupt: Mit einem Interrupt können Systemkomponenten auf
+   bestimmte Ereignisse hin die aktuelle Systemaktivität unterbrechen
+   und die Behandlung dieser Ereignisse durch den Prozessor erzwingen.
+
+   Date: Eine Datei ist eine Dateneinheit der höchsten Hauptspeicher-
+   Abstraktionsebene. Eine Datei kann als ein ein virtueller
+   Datenträger betrachtet werden.
+   
+   Systemaufruf: Unter einem Systemaufruf, oder auch systemcall,
+   versteht man den Aufruf einer Kernelfunktionalität von einer
+   höheren Abstraktionsschicht aus. Systemcalls stellen die
+   Schnittstelle zur Kommunikation mit dem Kernel dar.
+
+   Multitasking: Unter Multitasking versteht man die das simultane
+   Ausführen von mehreren Prozessen auf einem Prozessor. Dies wird
+   bewerkstelligt, in dem die Prozessorzeit auf die verschiedenen
+   Prozesse verteilt wird.
+
+2. Aufgabe: Kernel
+
+   In einem Microkernel sind nur die absolut minimalen Funktional-
+   itäten eines Kernels eingebaut. Jede weitere Funktionalität muss
+   als gesonderter Prozess im Userspace laufen. Der Nachteil dabei
+   ist, dass häufig zwischen Kernel- und Userspace gewechselt werden
+   muss, was viel Zeit kostet. Der Vorteil ist einfacheres Design und
+   ein System, dass leichter zu warten ist. 
+
+   In einem monolithschen Kernel ist schon viel Funktionalität mit
+   eingebaut. Das bringt einen Geschwindigkeitsvorteil, da nicht
+   zwischen Kernel- und Userspace gewechselt werden muss. Nachteilig
+   ist jedoch, dass das der Aufbau des Kernels komplexer und
+   schwieriger zu warten wird.
+
+3. Aufgabe: Begriffe
+
+   Bei Nested-Interrupts, kann ein Interrupt 1 von
+   einem Interrupt 2 unterbrochen werden. Erst wenn Interrupt 2 fertig
+   ist, wird mit der Behandlung von 1 fortgefahren.
+
+   Vorteile: Ein wichtiger Interrupt kann sofort dran kommen und muss
+   nicht auf unwichtige warten. Das bringt kürzere Latenz bei der
+   Verarbeitung.
+
+   Nachteile: Es kann auch passieren, dass ein wichtiger Interrupt
+   unterbrochen wird und auf einen Unwichtigen warten muss. Das ganze
+   ist komplizierter und ferhleranfälliger, da mehrere Interrupt
+   Kontexte offen sein müssen.
