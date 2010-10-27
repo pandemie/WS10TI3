@@ -17,13 +17,13 @@ int main(int argc, char **argv){
   //Open file and check for success.
   file = fopen(argv[1],"r");
   if(file == 0){
-    printf("Failure reading file\n");
+    printf("failure reading file\n");
     return 1;
   }
   
   //Read first line and check
   if(fscanf(file,"%i",&target) != 1){
-    printf("Failure reading first line\n");
+    printf("failure reading first line\n");
     return 1;
   }
 
@@ -34,8 +34,8 @@ int main(int argc, char **argv){
 
   //check for the last return value of fscanf() and print adequate message
   if(scancode == EOF){
-    printf("The target was %i.\n",target);
-    printf("The calculated sum was: %i\n",sum);
+    printf("the target was %i.\n",target);
+    printf("the calculated sum was: %i\n",sum);
     if(sum == target){
       printf("traget equals result\n");
     } else {
