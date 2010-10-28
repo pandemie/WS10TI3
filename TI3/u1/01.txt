@@ -1,3 +1,13 @@
+TI III im WS10/11
+
+Tutor: Viet Do
+Bearbeitet von:
+Marcel Jünemann
+Dimitri Schachmann
+
+Übung 1 am 29.10.2010
+
+
 1. Aufgabe: Begriffe 
    
    Instruktion Set: Unter einem instruction set versteht man die

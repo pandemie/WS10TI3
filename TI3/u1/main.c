@@ -1,3 +1,7 @@
+//authors:
+//Marcel Jünemann
+//Dimitri Schachmann
+//29.10.2010
 #include <stdio.h>
 
 
