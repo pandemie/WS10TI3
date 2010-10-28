@@ -37,7 +37,7 @@ int main(int argc, char **argv){
     printf("the target was %i.\n",target);
     printf("the calculated sum was: %i\n",sum);
     if(sum == target){
-      printf("traget equals result\n");
+      printf("target equals result\n");
     } else {
       printf("target not met\n");
     }

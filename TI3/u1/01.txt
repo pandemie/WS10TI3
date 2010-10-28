@@ -8,7 +8,7 @@
    bestimmte Ereignisse hin die aktuelle Systemaktivität unterbrechen
    und die Behandlung dieser Ereignisse durch den Prozessor erzwingen.
 
-   Date: Eine Datei ist eine Dateneinheit der höchsten Hauptspeicher-
+   Datei: Eine Datei ist eine Dateneinheit der höchsten Hauptspeicher-
    Abstraktionsebene. Eine Datei kann als ein ein virtueller
    Datenträger betrachtet werden.
    
