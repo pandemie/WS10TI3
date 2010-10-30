@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 
 #define BUFSIZE			1024
 #define PATHSIZE		256
@@ -24,10 +25,24 @@ char copy_buffer[BUFSIZE];
  */
 int copy(char *source, char *target)
 {
+  int fd_source;
+  int fd_target;
+ 
+  size_t buffer_size = 128;
+  char buffer[buffer_size];
+  
+  fd_source = open(source, O_RDONLY);
+  if(fd_source < 0){
+    return -1;
+  }
+  fd_target = open(target, O_APPEND | O_CREAT | O_EXCL | O_WRONLY, S_IRWXU);
 
-
-
-
+  while(read(fd_source, buffer, buffer_size) != 0){
+    write(fd_target, buffer, buffer_size);
+  }
+  
+  close(fd_target);
+  close(fd_source);
 }
 
 
@@ -40,13 +55,27 @@ char parse_command(char *command)
 /* erzeugt einen Ordner foldername */
 int setup_trashcan(char *foldername)
 {
-
+  return (int) mkdir(foldername);
 }
 
 /* führt trashcan -p[ut] filename aus */
 int put_file(char *foldername, char *filename)
 {
-	
+  char str[512];
+  char* str_copy = str;
+
+  while(*foldername != 0){
+    *(str_copy++) = *(foldername++);
+  }
+  *(str_copy++) = '/';
+  while(*filename != 0){
+    *(str_copy++) = *(filename++);
+  }
+  *(str_copy++) = 0;
+
+  printf("%i\n",setup_trashcan(foldername));
+  copy(filename, str);
+  
 }
 
 
@@ -65,6 +94,11 @@ int remove_file(char *foldername, char *filename)
 
 int main(int argc, char *argv[])
 {
+  char source[] ="trashcan_framework.c";
+  char target[] = "test_can";
+  put_file(source, target);
+  
+  /*
 	if (argc == 1) {
 		printf("...not enough arguments!\n");
 		return EXIT_FAILURE;
@@ -124,5 +158,6 @@ int main(int argc, char *argv[])
 				return EXIT_FAILURE;
 		}
 	}
+  */
 	return EXIT_SUCCESS;
 }
