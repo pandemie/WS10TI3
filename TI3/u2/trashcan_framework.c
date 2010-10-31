@@ -17,6 +17,8 @@
 char copy_buffer[BUFSIZE];
 
 
+
+/*
 /* 'copy' kopiert den Dateiinhalt einer Datei namens 
  * "source". Eine Kopie target wird nur erzeugt, wenn 
  * eine Datei "target" noch nicht existiert.
@@ -28,21 +30,19 @@ int copy(char *source, char *target)
   int fd_source;
   int fd_target;
  
-  size_t buffer_size = 128;
-  char buffer[buffer_size];
-  
   fd_source = open(source, O_RDONLY);
   if(fd_source < 0){
     return -1;
   }
   fd_target = open(target, O_APPEND | O_CREAT | O_EXCL | O_WRONLY, S_IRWXU);
 
-  while(read(fd_source, buffer, buffer_size) != 0){
-    write(fd_target, buffer, buffer_size);
+  while(read(fd_source, copy_buffer, BUFSIZE) != 0){
+    write(fd_target, copy_buffer, BUFSIZE);
   }
   
   close(fd_target);
   close(fd_source);
+  return 1;
 }
 
 
@@ -55,27 +55,35 @@ char parse_command(char *command)
 /* erzeugt einen Ordner foldername */
 int setup_trashcan(char *foldername)
 {
-  return (int) mkdir(foldername);
+  int success = (int) mkdir(foldername,0777);
+  
+  int er = errno;
+  printf("%s\n", strerror( er ));
+  return success;
 }
 
 /* führt trashcan -p[ut] filename aus */
 int put_file(char *foldername, char *filename)
 {
-  char str[512];
-  char* str_copy = str;
+  char path[512];
+  char* path_copy = path;
+  char* foldername_copy = foldername;
+  char* filename_copy = filename;
 
-  while(*foldername != 0){
-    *(str_copy++) = *(foldername++);
+  while(*foldername_copy != 0){
+    *(path_copy++) = *(foldername_copy++);
   }
-  *(str_copy++) = '/';
-  while(*filename != 0){
-    *(str_copy++) = *(filename++);
+  *(path_copy++) = '/';
+  while(*filename_copy != 0){
+    *(path_copy++) = *(filename_copy++);
   }
-  *(str_copy++) = 0;
+  *(path_copy++) = 0;
 
-  printf("%i\n",setup_trashcan(foldername));
-  copy(filename, str);
-  
+  copy(filename, path);
+  int er = errno;
+  if(er == 17 || er == 9)
+    printf("%s\n",strerror(er));
+  return 1;
 }
 
 
@@ -94,12 +102,7 @@ int remove_file(char *foldername, char *filename)
 
 int main(int argc, char *argv[])
 {
-  char source[] ="trashcan_framework.c";
-  char target[] = "test_can";
-  put_file(source, target);
-  
-  /*
-	if (argc == 1) {
+  	if (argc == 1) {
 		printf("...not enough arguments!\n");
 		return EXIT_FAILURE;
 	} else {
@@ -121,7 +124,7 @@ int main(int argc, char *argv[])
 						break;
 					case -3:
 						printf("...source file could not be removed!\n");
-					default:
+					default: 
 						break;
 				}
 				break;
@@ -158,6 +161,5 @@ int main(int argc, char *argv[])
 				return EXIT_FAILURE;
 		}
 	}
-  */
-	return EXIT_SUCCESS;
+  	return EXIT_SUCCESS;
 }
