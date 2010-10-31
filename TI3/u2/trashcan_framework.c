@@ -16,6 +16,7 @@
 
 char copy_buffer[BUFSIZE];
 
+int remove_file(char*,char*);
 
 
 /*
@@ -42,7 +43,7 @@ int copy(char *source, char *target)
   
   close(fd_target);
   close(fd_source);
-  return 1;
+  return 0;
 }
 
 
@@ -55,48 +56,62 @@ char parse_command(char *command)
 /* erzeugt einen Ordner foldername */
 int setup_trashcan(char *foldername)
 {
-  int success = (int) mkdir(foldername,0777);
-  
-  int er = errno;
-  printf("%s\n", strerror( er ));
-  return success;
+  return (int) mkdir(foldername,0777);
+}
+
+/* fügt foldername und filename zu einem pfad zusmmen */
+void merge_path(char *foldername, char *filename, char *path){
+  while(*foldername != 0){
+    *(path++) = *(foldername++);
+  }
+  *(path++) = '/';
+  while(*filename != 0){
+    *(path++) = *(filename++);
+  }
+  *(path++) = 0;
 }
 
 /* führt trashcan -p[ut] filename aus */
 int put_file(char *foldername, char *filename)
 {
   char path[512];
-  char* path_copy = path;
-  char* foldername_copy = foldername;
-  char* filename_copy = filename;
-
-  while(*foldername_copy != 0){
-    *(path_copy++) = *(foldername_copy++);
+  merge_path(foldername, filename, path);
+  if(copy(filename, path) == -1){
+    return -1;
   }
-  *(path_copy++) = '/';
-  while(*filename_copy != 0){
-    *(path_copy++) = *(filename_copy++);
-  }
-  *(path_copy++) = 0;
 
-  copy(filename, path);
-  int er = errno;
-  if(er == 17 || er == 9)
-    printf("%s\n",strerror(er));
-  return 1;
+  if(errno == 9){
+    printf("file allready exist\n");
+    return -2;
+  }
+
+  char dot[] = ".";
+  if (remove_file(dot, filename)  == -1){
+    return -3;
+  }
+
+  return 0;
 }
 
 
 /* führt trashcan -g[et] filename aus */
 int get_file(char *foldername, char *filename)
 {
-
+  char path1[512];
+  char path2[512];
+  char dot[] = ".";
+  merge_path(foldername,filename,path1);
+  merge_path(dot,filename,path2);
+  copy(path1,path2);
+  remove_file(dot,path1);
 }
 
 /* führt trashcan -r[emove] filename aus */
 int remove_file(char *foldername, char *filename)
 {
-
+  char path[512];
+  merge_path(foldername, filename, path);
+  return unlink(path);
 }
 
 
