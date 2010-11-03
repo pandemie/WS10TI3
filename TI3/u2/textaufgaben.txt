@@ -1,0 +1,28 @@
+TI III - Übung 2
+Gruppe O
+Dimitri Schachmann
+Marcel Jünemann
+
+1. Aufgabe
+Die Idee der Protection Rings ist, Prozessen nur so viele Rechte zu geben,
+wie sie zur Ausführung ihrer Aufgabe benötigen. Insbesondere sollen Prozesse
+keinen direkten Zugriff auf Hardware und Speicherbereiche anderer Prozesse
+haben. Windows und Linux benutzen nur Ring 0 für den Kernel und Ring 3 für
+Programme im Userspace.
+(Quelle: http://www.giac.org/resources/whitepaper/architecture/92.php)
+
+2. Aufgabe
+- Microkernel: Die Aussage stimmt zu 90%, Microkernel beschränken sich auf
+  grundlegende Speicherverwaltung und Kommunikation zwischen Prozessen. Aller-
+  dings ist der Begriff nicht standartisiert, sodass man ggf. auch einen Kernel,
+  der noch etwas mehr Funktionen implementiert, noch als Microkernel bezeichnen
+  könnte. Der Übergang zwischen Micro- und Hybridkernel ist fließend.
+- Die Aussage ist falsch. Darauf muss der Kernel nur im Usermodus achten.
+  Im Kernelmodus ist vollständiger Speicher- und Hardwarezugriff vorhanden.
+-
+- Die Aussage stimmt, bei einem Microkernel sind viele häufig genutzte
+  Funktionen im Userspace implementiert. Da diese Funktionen i.d.R. Anfragen
+  an den Kernel stellen, sind jedes Mal beim Aufruf dieser Funktionen
+  zusätzliche Context Switches nötig.
+
+3. Aufgabe
