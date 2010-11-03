@@ -35,6 +35,7 @@ int copy(char *source, char *target)
   if(fd_source < 0){
     return -1;
   }
+
   fd_target = open(target, O_APPEND | O_CREAT | O_EXCL | O_WRONLY, S_IRWXU);
 
   while(read(fd_source, copy_buffer, BUFSIZE) != 0){
@@ -74,14 +75,16 @@ void merge_path(char *foldername, char *filename, char *path){
 /* führt trashcan -p[ut] filename aus */
 int put_file(char *foldername, char *filename)
 {
-  char path[512];
+  //foldername und filename weden zu "foldername/filename" in path[]
+  char path[PATHSIZE];
   merge_path(foldername, filename, path);
   if(copy(filename, path) == -1){
     return -1;
   }
-
+  
+  //Gib Fehlercode -2 zurück, wenn in der trashcan schon einen Datei
+  //mit dem selben Namen existiert
   if(errno == 9){
-    printf("file allready exist\n");
     return -2;
   }
 
@@ -97,8 +100,10 @@ int put_file(char *foldername, char *filename)
 /* führt trashcan -g[et] filename aus */
 int get_file(char *foldername, char *filename)
 {
-  char path1[512];
-  char path2[512];
+  //in path1 steht schließlich foldername/filename
+  //in path2 steht schließlich ./filename
+  char path1[PATHSIZE];
+  char path2[PATHSIZE];
   char dot[] = ".";
   merge_path(foldername,filename,path1);
   merge_path(dot,filename,path2);
@@ -109,7 +114,7 @@ int get_file(char *foldername, char *filename)
 /* führt trashcan -r[emove] filename aus */
 int remove_file(char *foldername, char *filename)
 {
-  char path[512];
+  char path[PATHSIZE];
   merge_path(foldername, filename, path);
   return unlink(path);
 }
