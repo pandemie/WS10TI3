@@ -58,7 +58,6 @@ int copy(char *source, char *target)
                     }
                 }
             }
-
         }
     }
 
