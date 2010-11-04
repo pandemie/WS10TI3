@@ -53,7 +53,7 @@ int copy(char *source, char *target)
                     break;
                 } else {
                     // write
-                    if ( write(fd_target, copy_buffer, BUFSIZE) == -1 ){
+                    if ( write(fd_target, copy_buffer, tmp) == -1 ){
                         break;
                     }
                 }
