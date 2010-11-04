@@ -26,3 +26,20 @@ Programme im Userspace.
   zusätzliche Context Switches nötig.
 
 3. Aufgabe
+   (1) subroutine call into operating system
+       Einfachste Möglichkeit, die bei simplen Betriebssystemen (z.B. MS-DOS)
+       zum Einsatz kommt. Da dort jede Software mit voller Berechtigung läuft,
+       muss nicht in einen anderen Mode gewechselt werden. Es wird schlicht 
+       zu der Interrupt Routine gesprungen und am Ende wieder zurückgesprungen.
+
+   (2) Machine-level instruction "system call"
+       Hier wir bei einem systemcall ein Interrupt Ausgelöst, in dessen ISR,
+       der entsprechende Code für den systemcall angesprungen wird. Compiler
+       fügt die Parameter für den systemcall ein. Die Behandlung des Aufrufs
+       erfolgt im Kernelmode. (die meisten UNIX Systeme)
+
+   (3) Call of system module
+       So wie bei (2) nur der Code für den Systemcall läuft im Mode des
+       Aufrufers, also im Usermode.
+
+   (4) Dispatching a task to a system process
