@@ -84,6 +84,7 @@ void readProcesses(LINK head)
         newP->sTime = sTime;
         addProcess ( head, newP );
     }
+    fclose ( prcs );
 }
 
 
