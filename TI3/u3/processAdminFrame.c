@@ -17,14 +17,14 @@ Die Prozesse sind in der Datei prcs.dat Zeile fuer Zeile in der Form:
 gespeichert.
 
 */
-
 struct pData //Daten der doppelt verketteten Liste
 {
  int pId;//ProzessID
  int aTime;//Ankunftszeit
  int sTime;//Ausfuehrungszeit
-
-  /*Struktur vervollstaendigen */
+ struct pData* next;
+ struct pData* prev;
+  /*Struktur vervollstaendigen */ // DONE
 };
 
 //Um Tipparbeit zu sparen
@@ -47,7 +47,11 @@ int main(void)
  LINK next;
  LINK head;
 
-/*TODO:head initialisieren*/
+/*TODO:head initialisieren*/ // DONE
+ head = (LINK) malloc ( sizeof(PROCESS) );
+ head->pId = -1;
+ head->next = head;
+ head->prev = head;
 
  readProcesses(head);
  while(head->next!=head)
@@ -67,20 +71,41 @@ Implementierung der Methoden*/
 //Liest die Prozesse ein und erstellt die Liste
 void readProcesses(LINK head)
 {
- /*TODO:implementieren*/
+ /*TODO:implementieren*/ // DONE
+    FILE* prcs = fopen ( "prcs.dat", "r" );
+    int pId, aTime, sTime;
+    LINK newP;
+    while ( fscanf ( prcs, "%d,%d,%d", &pId, &aTime, &sTime ) == 3 ){
+        newP = (LINK) malloc ( sizeof(PROCESS) );
+        newP->pId = pId;
+        newP->aTime = aTime;
+        newP->sTime = sTime;
+        addProcess ( head, newP );
+    }
 }
 
 
 //Einen Prozess an das Ende der Liste (also vor head) einfuegen
 void addProcess(LINK head,LINK neu)
 {
- /*TODO:implementieren*/
+ /*TODO:implementieren*/ // DONE
+  neu->next = head->next;
+  neu->prev = head;
+  head->next->prev = neu;
+  head->next = neu;
 }
 
 //Loeschen des angegebenen Knotens
 void deleteProcess(LINK current)
 {
- /*TODO:implementieren*/
+ /*TODO:implementieren*/ // DONE
+    // never delete the head node
+    if ( current->next == current )
+        return;
+
+    current->next->prev = current->prev;
+    current->prev->next = current->next;
+    free ( current );
 }
 
 
@@ -88,7 +113,16 @@ void deleteProcess(LINK current)
 
 LINK findNextProcess(LINK head)
 {
- /*TODO:implementieren*/
+    /*TODO:implementieren*/ // DONE
+    LINK current = head->next->next;
+    LINK min = head->next;
+    while ( current != head ){
+        if ( current->pId < min->pId ){
+            min = current;
+        }
+        current = current->next;
+    }
+    return min;
 }
 
 
