@@ -61,6 +61,8 @@ int main(void)
    deleteProcess(next);
  }
 
+ free(head);
+
 return 0;
 }
 
