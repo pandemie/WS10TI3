@@ -21,11 +21,31 @@ Prozess sowie beinhaltet den Adressraum des Prozesses. Wichtig sind:
 
 2. Aufgabe
 
-Fork ist ein UNIX-Systemcall, der eine Kopie von sich selbst erzeugt (inkl. Daten und Programcounter) und diese als Childprocess laufen lässt. Aus einem Prozess werden also zwei nahezu identische Prozesse (außer der PID), wobei in der Regel nach dem fork-Aufruf im Code eine Unterscheidung gemacht wird, ob man sich im Child- oder Parentprocess befindet. Hier könnte ihre Werbung stehen. Diese Unterscheidung wird mit Hilfe des Rückgabewertes von fork() getätigt, welcher beim neu erzeugten Prozess 0 ist und ansonsten die PID des neu erzeugten Prozesses. Damit lässt sich eine Art Multi-Threading realisieren, allerdings ist zu beachten, dass sich die Prozesse keinen gemeinsamen Speicher teilen.
+Fork ist ein UNIX-Systemcall, der eine Kopie von sich selbst erzeugt
+(inkl. Daten und Programcounter) und diese als Childprocess laufen
+lässt. Aus einem Prozess werden also zwei nahezu identische Prozesse
+(außer der PID), wobei in der Regel nach dem fork-Aufruf im Code eine
+Unterscheidung gemacht wird, ob man sich im Child- oder Parentprocess
+befindet. Hier könnte ihre Werbung stehen. Diese Unterscheidung wird
+mit Hilfe des Rückgabewertes von fork() getätigt, welcher beim neu
+erzeugten Prozess 0 ist und ansonsten die PID des neu erzeugten
+Prozesses. Damit lässt sich eine Art Multi-Threading realisieren,
+allerdings ist zu beachten, dass sich die Prozesse keinen gemeinsamen
+Speicher teilen.
 
 
 3. Aufgabe
 
-Ein Programm kann zum gleichen Zeitpunkt mehr als einmal ausgeführt werden. Solch eine Instanz eines Programmes wird Prozess genannt. Jeder Prozess hat seinen eigenen Speicherbereich, auf den kein anderer Prozess zugreifen kann. Ein Prozess besteht aus mindestens einem Thread. Threads werden nicht-sequentiell ausgeführt, so dass Prozesse "multi-tasking" fähig werden und gleichzeitig verschiedene Aufgaben abarbeiten können. Im Gegensatz zu Prozessen teilen sich die Threads des gleichen Prozesses einene gemeinsamen Speicher. Task ist eine Windowsbezeichnung für einen Prozess. Prozesse, die mit dem Benutzer über eine GUI interagieren werden in der Regel in der Task-Leiste angezeigt.
+Ein Programm kann zum gleichen Zeitpunkt mehr als einmal ausgeführt
+werden. Solch eine Instanz eines Programmes wird Prozess
+genannt. Jeder Prozess hat seinen eigenen Speicherbereich, auf den
+kein anderer Prozess zugreifen kann. Ein Prozess besteht aus
+mindestens einem Thread. Threads werden nicht-sequentiell ausgeführt,
+so dass Prozesse "multi-tasking" fähig werden und gleichzeitig
+verschiedene Aufgaben abarbeiten können. Im Gegensatz zu Prozessen
+teilen sich die Threads des gleichen Prozesses einene gemeinsamen
+Speicher. Task ist eine Windowsbezeichnung für einen
+Prozess. Prozesse, die mit dem Benutzer über eine GUI interagieren
+werden in der Regel in der Task-Leiste angezeigt.
 
 
