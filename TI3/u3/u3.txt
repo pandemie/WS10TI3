@@ -1,0 +1,22 @@
+TI III - Übung 3
+Gruppe O
+Dimitri Schachmann
+Marcel Jünemann
+
+1. Aufgabe 
+
+Ein PCB ist die Manifestation eines Prozesses in einem
+Betriebssystem. Er enthält sämtliche wichtige Information über den
+Prozess sowie beinhaltet den Adressraum des Prozesses. Wichtig sind:
+
+	 -Eine ProzessID
+	 -Registerwerte des Prozesses, darunter auch den Progamm-
+	  counter und den Stackpointer
+	 -Information über die Priorität des Prozesses
+	 -Information darüber wann der Prozess das letzte mal ge-
+	  laufen ist und wie lange insgesammt
+	 -Ein Pointer auf den nächsten PCB
+	 -Information über reservierte I/O Geräte und/oder Dateien.
+
+
+2. Aufgabe
