@@ -5,15 +5,16 @@ Marcel Jünemann
 
 1. Aufgabe
 
-
+Also ich verstehe die Aufgabe so, dass man nur den Unterschied zwischen Festplatte und RAM erklären soll, und keine Lösungsansätze o.ä. Der Unterschied ist, dass man auf RAM im konstanter Zeit zugreifen kann, egal wo die Daten lagen. Bei einer Festplatte muss erst der mechanische Lesekopf bewegt werden. D.h. ein Zugriff auf hintereinander liegende Daten geht schneller als der Zugriff auf verstreut liegende Daten. 
+Dieser Fakt führt dazu, dass es Algorithmen gibt, die den Nachteil von externer Fragmentierung bei RAM nahezu aufheben, aber bei Festplatten nicht sinnvoll anwendbar sind. Die Rede ist von Paging. Paging führt dazu, dass semantisch zusammenhängende Daten an vollkommen verschiedenen Orten liegen können. Bei RAM ist dies durch die konstante Zugriffszeit kein Problem, bei Festplatten würde dies aber zu exorbitanten Zugriffszeiten führen. Daher ist bei Festplatten eine Defragmentierung nötig.
 
 2. + 3.
 
-Also ich kann bei Ubuntu mit 2GB RAM und 2,6GB Swapfile folgende Aufrufe machen:
+Also ich kann bei Ubuntu mit 2GB RAM und 2,6GB Swappartition folgende Aufrufe machen:
 - malloc(1000000000)  2x
 - malloc(2000000000)  1x
 - malloc(3000000000)  0x
-Ich vermute, man kann so viel Speicher reservieren, wie der RAM hergibt.
+Offensichtlich kann man so viel Speicher reservieren, wie der RAM hergibt, aber nicht soviel wie RAM+Swap zusammen.
 
 Interessant für 2.: Ich kann mein Programm beliebig oft starten, und kann
 trotzdem jedesmal 2GB reservieren. Die Adressen sind auch wirklich immer gleich.
