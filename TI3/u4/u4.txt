@@ -1,0 +1,21 @@
+TI III - Übung 4
+Gruppe O
+Dimitri Schachmann
+Marcel Jünemann
+
+1. Aufgabe
+
+
+
+2. + 3.
+
+Also ich kann bei Ubuntu mit 2GB RAM und 2,6GB Swapfile folgende Aufrufe machen:
+- malloc(1000000000)  2x
+- malloc(2000000000)  1x
+- malloc(3000000000)  0x
+Ich vermute, man kann so viel Speicher reservieren, wie der RAM hergibt.
+
+Interessant für 2.: Ich kann mein Programm beliebig oft starten, und kann
+trotzdem jedesmal 2GB reservieren. Die Adressen sind auch wirklich immer gleich.
+Also wird der Speicher nicht wirklich reserviert?
+
