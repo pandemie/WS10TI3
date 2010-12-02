@@ -1,0 +1,46 @@
+    1. Aufgabe
+    
+    Der neue Linux Scheduler ist der Completely Fair Scheduler
+    (CFS). Das Prinzip dahinter ist, dass immter der Prozess zum
+    laufen kommt, der schon die längst Wartezeit hinter sich hat. So
+    kommt es am ehesten zu einer quasi parallelen Ausführung, da nie
+    ein Prozess besonders lange auf einen anderen warten muss. Die
+    Granularität liegt im Nanosekundenbereich. Die Prozesse werden in
+    einem rot-schwarz Baum verwaltet. Die Komplexität des Algorithmus
+    liegt also bei O(log N) mit N Anzahl der Prozesse. Denn der
+    zugriff dauert immer eine konstante zeit, aber das Wiedereinfügen
+    ist in O(log N).
+
+    2. Aufgabe
+
+    Für Desktoprechner ist es wichtig die Antwortzeit zu
+    minimieren. Wenn der Benutzer eine Eingabe liefert, dann sollte in
+    möglichst kurzer Zeit etwas passieren, sodass dem Benutzer ein
+    hohes Maß an Interaktivität präsentiert wird. Bei Serversystemen
+    ist dies nicht so wichtig. Wichtig ist da hingegen die Maximierung
+    des Durchsatzes und die Minimierung der Durchlaufzeit. Der
+    Durchsatz ist die Anzahl von abgearbeiteten Aufgaben pro
+    Zeiteinheit. Die Durchlaufzeit, die Zeit, die das System für das
+    Vollständige Abarbeiten von einer Reihe von Prozessen benötigt.
+
+    3. Aufgabe
+    
+    Im RTLinux git es zwei verschiedene scheduler:
+
+    -Rate-monotonic scheduler: Dieser Scheduler vergibt an periodisch
+    wiederkehrende Tasks Prioritäten. So kriegt ein häuft
+    wiederkehrender Task eine hohe Priorität im vergleich zu selten
+    auftretenden. Problem: kann nicht garantieren, dass alle Deadlines
+    eingehalten werden.
+
+    -Earlies-Deadline-First: Die Prioritäten werden dynamisch
+    gesetzt. Der Prozess mit der frühsten Deadline hat die höchste
+    Priorität. Wenn ein neuer Prozess auftritt, der auch noch die
+    frühste Deadline hat, dann wird der laufende Prozess unterbrochen
+    und der neue kommt zu Ausführung.
+
+    Der Unterschied zum Herkömmlichen Linux Scheduler ist, dass hier
+    nicht auf minimale Antwortzeit minimiert optimiert wird, sondern
+    auf Echtzeit. Für Nutzeranwendungen nicht geeignet, viele da
+    Hochpriore Prozesse das gesammte System für eine Weile blokieren
+    können.
