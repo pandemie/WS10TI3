@@ -222,9 +222,12 @@ LINK roundRobin(LINK head,LINK current,int tStep)
 {       
  updateProcess(current,tStep); 
 
-/*TODO:implement method*/
+ LINK next = current->next;
+ 
+ if(current->sTime <= 0)
+   deleteProcess(current);
   
- return current;
+ return next;
 }
 
 
@@ -238,9 +241,10 @@ LINK fcfs(LINK head,LINK current,int tStep)
 {
  updateProcess(current,tStep); 
 
-/*TODO:implement method*/
-  
- return current;
+ if(current->sTime <= 0)
+   deleteProcess(current);
+   
+ return head;
 }
 
 
@@ -253,9 +257,10 @@ LINK spn(LINK head,LINK current,int tStep)
 {
  updateProcess(current,tStep); 
 
-/*TODO:implement method*/
+ if(current->sTime <= 0)
+   deleteProcess(current);
   
- return current;
+ return findShortestPr(head);
 }
 
 /*Hilfsfunktion fuer den spn Algorithmus*/
