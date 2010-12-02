@@ -1,3 +1,8 @@
+TI III - Übung 5
+Gruppe O
+Dimitri Schachmann
+Marcel Jünemann
+
     1. Aufgabe
     
     Der neue Linux Scheduler ist der Completely Fair Scheduler
