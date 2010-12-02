@@ -6,14 +6,14 @@ Marcel Jünemann
     1. Aufgabe
     
     Der neue Linux Scheduler ist der Completely Fair Scheduler
-    (CFS). Das Prinzip dahinter ist, dass immter der Prozess zum
-    laufen kommt, der schon die längst Wartezeit hinter sich hat. So
+    (CFS). Das Prinzip dahinter ist, dass immer der Prozess zum
+    laufen kommt, der schon die längste Wartezeit hinter sich hat. So
     kommt es am ehesten zu einer quasi parallelen Ausführung, da nie
     ein Prozess besonders lange auf einen anderen warten muss. Die
     Granularität liegt im Nanosekundenbereich. Die Prozesse werden in
     einem rot-schwarz Baum verwaltet. Die Komplexität des Algorithmus
     liegt also bei O(log N) mit N Anzahl der Prozesse. Denn der
-    zugriff dauert immer eine konstante zeit, aber das Wiedereinfügen
+    Zugriff benötigt immer eine konstante Zeit, aber das Wiedereinfügen
     ist in O(log N).
 
     2. Aufgabe
@@ -22,11 +22,11 @@ Marcel Jünemann
     minimieren. Wenn der Benutzer eine Eingabe liefert, dann sollte in
     möglichst kurzer Zeit etwas passieren, sodass dem Benutzer ein
     hohes Maß an Interaktivität präsentiert wird. Bei Serversystemen
-    ist dies nicht so wichtig. Wichtig ist da hingegen die Maximierung
+    ist dies nicht so wichtig. Wichtig ist dort hingegen die Maximierung
     des Durchsatzes und die Minimierung der Durchlaufzeit. Der
     Durchsatz ist die Anzahl von abgearbeiteten Aufgaben pro
     Zeiteinheit. Die Durchlaufzeit, die Zeit, die das System für das
-    Vollständige Abarbeiten von einer Reihe von Prozessen benötigt.
+    vollständige Abarbeiten von einer Reihe von Prozessen benötigt.
 
     3. Aufgabe
     
@@ -44,8 +44,9 @@ Marcel Jünemann
     frühste Deadline hat, dann wird der laufende Prozess unterbrochen
     und der neue kommt zu Ausführung.
 
-    Der Unterschied zum Herkömmlichen Linux Scheduler ist, dass hier
+    Der Unterschied zum herkömmlichen Linux Scheduler ist, dass hier
     nicht auf minimale Antwortzeit minimiert optimiert wird, sondern
-    auf Echtzeit. Für Nutzeranwendungen nicht geeignet, viele da
-    Hochpriore Prozesse das gesammte System für eine Weile blokieren
+    auf Echtzeit. Für Nutzeranwendungen nicht geeignet, da viele
+    hochpriore Prozesse das gesammte System für eine Weile blockieren
     können.
+
