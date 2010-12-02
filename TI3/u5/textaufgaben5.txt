@@ -1,0 +1,22 @@
+TI III - Übung 5
+Gruppe O
+Dimitri Schachmann
+Marcel Jünemann
+
+1. Aufgabe
+Erklären Sie die Ansätze und Funktionsprinzipien des aktuellen Linux Schedulers und erläutern sie insbesonde-
+re dessen Komplexitätsklasse, dessen Datenstrukturen und dessen Granularität.
+
+
+
+2. Aufgabe
+Nach welchen Parametern lassen sich scheduling Algorithmen für Server- und Desktoprechner optimieren?
+
+
+
+3. Aufgabe:
+Erklären sie die Funktionsweise des Schedulers im realtime-Kernel RTLinux. Was sind die Unterschiede zum
+herkömmlichen Linux Scheduler?
+
+
+
