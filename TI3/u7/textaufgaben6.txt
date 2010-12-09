@@ -15,3 +15,13 @@ Marcel Jünemann
        Synchrone Non Blocking IO: Der Thread sendet einen IO-request
        und geht in den wartezustand über. Bis die Daten vorliegen,
        kann ein anderer Thread weitermachen.
+
+
+       Aufgabe 2
+
+       Per Spezifikation wird die Root Directory beim Anlegen des
+       Filesystems erstellt und hat eine feste Größe. Es können dem
+       nach maximal soviele Dateien im Wurzelverzeichnis stehen, wie
+       dort Platz ist.  Weitere Verzeichnisse werden in der Data Area
+       gespeichert, die fast die gesammte Partition ausmacht. Dort
+       können also quasi beliebig viele Referenzen gespeichert werden.
