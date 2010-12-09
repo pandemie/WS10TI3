@@ -1,0 +1,17 @@
+TI III - Übung 6
+Gruppe O
+Dimitri Schachmann
+Marcel Jünemann
+
+       Aufgabe 1
+
+       Asynchrone IO: Der Thread sendet einen IO-request an den Kernel
+       und arbeitet dann sofort an etwas anderem weiter. Wenn die
+       Daten vorliegen, wird der Thread vom Kernel informiert.
+
+       Synchrone IO: Der Thread sendet einen IO-request und macht
+       'busy-waiting', bis die Daten vorliegen. Nicht so gut.
+
+       Synchrone Non Blocking IO: Der Thread sendet einen IO-request
+       und geht in den wartezustand über. Bis die Daten vorliegen,
+       kann ein anderer Thread weitermachen.
