@@ -1,0 +1,49 @@
+TI III - Übung 7
+Gruppe O
+Dimitri Schachmann
+Marcel Jünemann
+
+Aufgabe 1
+
+	Ein Stackframe ist ein Bereich im Stackpeicher. Er stellt den
+	temorären Speicher einer Aufgerufenen Funktion dar. Sobald die
+	Funktion endet, verfällt der Inhalt des zugehörigen
+	Stackframes. Im Stackframe sind wichtige Informationen zur
+	Ausführung der Funktion gespeichert.  Der Aufrufer legt auf
+	dem Stack die Parameter der Funktion und die Rücksprungadresse
+	ab. Ferner werde die innerhalb der Funktion verwendeten
+	lokalen Variablem im Stackframe gespeichert. Da die
+	Rücksprungadresse immer oberhalb des sogenannten Framepointers
+	steht, kann am ende der Ausführung dierekt hinter den Aufruf
+	der Funktion gesprungen werden.
+
+Aufgabe 2
+
+	Ein Buffer ist ein Array im Speicher. Arrays haben eine fixe
+	Länge. Wenn man versucht etwas einen einen Buffer zu
+	schreiben, das länger ist, als der Buffer, dann wird diese
+	übschschüssige Information schlicht dahinter geschrieben, wenn
+	keine Sonderabfrage nach der Länge der Eingabe erfolgt. Wenn
+	man weiss, welche bedeutung der Dahinterliege Speicherbereich
+	hat, dann kann man die Eingabe so wählen, dass man gezielt
+	etwas reinschreibt, was die Ausführung des Programms
+	verändert.
+
+Aufgabe 3
+
+	Es wird die Rücksprungadresse von checkPw() so veränder, dass
+	nach Ende der Funktion zu label2 gesprungen wird und 'call =
+	rootCommand' gesetzt wird. Im Stack Frame von checkPw()
+	befindet sich der Passwortbuffer 'char pw[16]' und geleich
+	dahinter im Speicher der Zähler 'int j'. Die Funktion geht
+	jedes einzelne Zeichen in der Passwortdatei "pw" durch und
+	schreibt mit hilfe des Zählers j, das ganze in pw[j]. Der
+	Exploit wir so bewerkstelligt, dass die ersten 16 zeichen des
+	Passwortes frei gewählt werden. Da dierekt im Anschluss an
+	pw[15] die Variable j liegt, wird sie so überschrieben, dass
+	pw[j] nun auf die Rücksprungadresse zeigt. Schließlich muss
+	wählt man noch die letzten Zeichen des Passworts, als die neue
+	Rücksprungadresse. Um das ganze Umzusetzen benötigt man einen
+	Hexeditor, da man Werte benötigt, die man nicht durcken, und
+	dem entsprechend nicht einfach so über die Tastatur eingeben
+	kann.
