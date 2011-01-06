@@ -1,0 +1,33 @@
+TI III - Übung 8
+Gruppe O
+Dimitri Schachmann
+Marcel Jünemann
+
+Aufgabe 1
+
+Mit Wireshark findet man heraus, dass beim Aufruf von example.com mit
+Firefox folgende Protokolle benutzt werden: (in dieser Reihenfolge)
+1) DNS
+2) TCP
+3) HTTP
+
+Die Aufgaben der Protokolle sind wie folgt:
+1) Zu einem Hostnamen wie draphony.com die IP-Adresse des HTTP-Servers
+   herausfinden.
+2) Transmission Control Protokoll ist ein Zwischenprotokoll, dass eine
+   Verbindung zwischen zwei Rechnern herstellt, die zusätzlich folgende 
+   Eigenschaft hat:
+   -> Die Verbindung ist zuverlässig, d.h. falls Pakete verloren gehen,
+      werden diese Pakete erneut angefragt
+   -> Verbindungsorientiert: Wie bei einem Telefon wird eine existiert
+      eine temporäre 'Verbindung' zwischen den beiden Rechnern, die
+      zunächst aufgebaut werden muss und auch wieder beendet werden muss.
+   -> Es wird sichergestellt, dass die gesendeten Pakete in der beabsichtigten
+      Reihenfolge beim Empfänger "ankommen"
+3) HTTP dient zur Kommunikation von Browser und Webserver. Hier wird 
+   angegeben, welche Seite vom Server verlangt wird, welche Cookies im
+   Browser hinterlegt werden etc. Auch das Senden von Formulareingaben
+   geschieht über HTTP. Über HTTP können leicht Daten in verschiedensten
+   Formaten übertragen werden, wie z.B. text/html oder application/pdf.
+
+
