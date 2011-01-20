@@ -8,6 +8,9 @@
 
 int main(int argc, char* argv){
   struct socaddr_in server;
+  struct socaddr_in client;
+  int client_soc;
+  socklen_t len;
   int soc = socket(AF_INET,SOCK_STREAM,0);
   if(soc < 0){
     printf("could not create socket\n");
@@ -24,12 +27,15 @@ int main(int argc, char* argv){
   }
 
   if(listen(soc,1) == -1){
-    pritntf("error on listen()\n");
+    printf("error on listen()\n");
   }
-
-
- 
-  bind(soc
+  
+  len = sizeof(client);
+  client_soc = accept(soc, (struckt sockaddr*)&client, &len);
+  if(client_soc <0){
+    printf("error on accept\n");
+  }
+    
   
   return 0
 }
