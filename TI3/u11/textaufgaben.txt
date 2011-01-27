@@ -11,6 +11,10 @@ b) Das Problem von versteckten Endgeräten tritt insbesondere in Funknetzwerken 
 c) Man kann ein polling-Verfahren einführen, bei dem Rechner nur dann Daten an den Accesspoint senden dürfen, wenn sie "gefragt" wurden. Bei Funknetzen kann man auch einfach die versteckten Endgeräten wo anders hinschieben oder die Antennenleistung erhöhen :)
 
 
+Aufgabe 3
+Die Frequenzbereiche von WLAN und Bluetooth überschneiden sich teilweise. Wenn WLAN eine Kollision feststellt, dann geht es davon aus, dass zwei Stationen gleichzeitig versucht haben, auf den AP zuzugreifen. Als Reaktion verringert der AP die Datenrate, um die Bit Error Rate zu senken.
+Bluetooth wechselt bei einer Kollision die Sendefrequenz. Wenn nun eine Kollision dadurch entsteht, dass WLAN und Bluetooth gleichzeitig Daten senden, dann wird das WLAN langsamer und Bluetooth wechselt den Kanal, was z.B. bei Stimmenübertragung zu einem kurzzeitigen Aussetzer führen kann.
+Dadurch das WLAN die Datenrate gesenkt hat, wird allerdings auch eine erneute Kollision zwischen WLAN und Bluetooth wahrscheinlicher (Bluetooth wechselt den Kanal ja öfter mal), da die Übertragung mit WLAN nun insgesamt länger dauert. Das ist ein Teufelskreis... Insgesamt ist es also (ohne die Gegenmaßnahmen, die es mittlerweile sowohl bei WLAN als auch bei Bluetooth gibt) nicht besonders ratsam, da insbesondere das WLAN langsamer wird.
 
 
 
