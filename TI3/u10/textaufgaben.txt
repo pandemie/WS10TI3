@@ -1,0 +1,19 @@
+TI III - Übung 10
+Gruppe O
+Dimitri Schachmann
+Marcel Jünemann
+
+Aufgabe 1
+Quelle: de.wikipedia.org
+
+Als Bitstopfen (englisch bit stuffing) bezeichnet man in der Nachrichtentechnik das Einfügen eines oder mehrerer Bits in eine Datenübertragung, um Signalinformationen (d.h. keine Daten im eigentlichen Sinne/keine Nutzdaten) an den Empfänger zu übermitteln. Der Empfänger muss in diesem Fall wissen, wie er diese zusätzlich eingefügten Bits erkennt und wieder entfernt, um die eigentlichen Nutzdaten zu erhalten. Um eine Synchronisierung der Teilnehmer zu ermöglichen, soll verhindert werden, dass lange monotone Sequenzen von 0 oder 1 übertragen werden. Dadurch soll verhindert werden, dass die Übertragung zwischen Sender und Empfänger auseinanderdriftet (z. B. aufgrund von etwas ungenauen Taktsignalen zwischen den beteiligten ICs bzw. Kommunikationsteilnehmern). Beim Bitstuffing wird nach fünf gleichen Bits ein inverses Bit eingefügt, und dadurch wird eine monotone Folge unterbrochen. Der Empfänger kennt dieses Verfahren und entfernt beim Empfang einer Folge von fünf gleichen Bits das folgende sechste Bit und erhält damit die ursprünglichen Daten. 
+
+
+Aufgabe 2
+Quelle: en.wikipedia.org
+
+Vergleich 10BASE-T, 100BASE-TX, 1000BASE-CX
+Bandbreiten sind unterschiedlich (10Mbit/s, 100Mbit/s, 1000Mbit/s)
+Aufbau der Kabel ist unterschiedlich, Frequenzen jedoch nicht
+Die maximale Kabellänge ist 100m.
+
