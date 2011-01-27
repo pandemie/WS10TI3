@@ -32,6 +32,7 @@ void printBinArray(char* ar, int len,int start_bit);
 void computeCRC(char* msg,int msg_len, char* poly, int poly_len);
 int copyPLUScrc(char *source, char *target);
 int copyMINUScrc(char *source, char *target);
+void createFile(char *source);
 
 short tmp = 0;
 short reg = 0;
@@ -41,8 +42,6 @@ int p_len = 17; //crc16
 char crc[2] = {0,0};
 
 int main(int argc, char* argv){
-
-
   
   //set the polynom. reverse order because of endianness
   SETBIT(poly,0);//bit 16
@@ -100,6 +99,8 @@ void computeCRC(char* msg,int msg_len, char* poly, int poly_len){
   }
 }
 
+
+
 void printBinArray(char* ar, int len, int start_bit){
   for(int i = start_bit; i<len+start_bit; ++i){
     if(ISBITSET(ar,i)){
@@ -111,17 +112,44 @@ void printBinArray(char* ar, int len, int start_bit){
   printf("\n");
 }
 
-
-void setbit(short* x,int i){
-  *x|=(1<<i);
+void loadMsg(char* source){
+  int fd_source,tmp;
+  fd_source = open(source, O_RDONLY);
+  while(1){
+    tmp = read(fd_source, copy_buffer, BUFSIZE);
+    if ( tmp == 0 ){ // EOF
+      break;
+    } else if ( tmp == -1 ) { // ERROR
+      break;
+    } else {
+      // write
+      if ( write(fd_target, copy_buffer, tmp) == -1 ){
+	break;
+      }
+    }
+  }
 }
 
-void clearbit(short* x,int i){
-  *x&=(~(1<<i));
-}
+void createFile(char* source){
+  int fd_source, fd_target,tmp;
+  fd_source = open(source, O_RDONLY);
+  fd_target = open(target, O_APPEND | O_CREAT | O_EXCL | O_WRONLY, S_IRWXU);
 
-int isbitset(short* x,int i){
-  return (*x|(1<<i))==*x;
+  while(1){
+    tmp = read(fd_source, copy_buffer, BUFSIZE);
+    if ( tmp == 0 ){ // EOF
+      //append crc
+      write(fd_target,crc,2);
+      break;
+    } else if ( tmp == -1 ) { // ERROR
+      break;
+    } else {
+      // write
+      if ( write(fd_target, copy_buffer, tmp) == -1 ){
+	break;
+      }
+    }
+  }
 }
 
 int copyPLUScrc(char *source, char *target)
