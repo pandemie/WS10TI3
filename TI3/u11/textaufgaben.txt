@@ -1,0 +1,18 @@
+TI III - Übung 11
+Gruppe O
+Dimitri Schachmann
+Marcel Jünemann
+
+Aufgabe 2
+a) In Netzwerken möchte man Kollisionen vermeiden. Eine Kollision ist z.B. wenn zwei Rechner gleichzeitig (und auf dem gleichen Kanal) versuchen, an einen dritten Rechner (z.B. ein Router) Daten zu senden. Der Dritte kann diese Daten dann nicht richtig empfangen. Um das zu verhindern, sollen alle Rechner im Netzwerk nach dem Prinzip "listen before talk" verfahren. Das heißt: Wenn Rechner A an Rechner B Daten senden möchte, dann horcht A zuerst, ob schon ein anderer Rechner C an Rechner B Daten sendet, und wartet in diesem Fall eine gewisse Zeit, bevor er erneut versuchen seine Daten an B zu senden. Nun kann es in gewissen Netzwerken (siehe b) vorkommen, dass A nichts von dem Datenverkehr von C an B mitbekommt. In diesem Fall würde A denken, dass B gerade nichts zu tun hat und ihm seine Daten senden. Es käme zu einer Kollision.
+
+b) Das Problem von versteckten Endgeräten tritt insbesondere in Funknetzwerken auf, wenn C soweit von A entfernt ist, dass der Datenverkehr von C (der für B bestimmt ist) nicht mehr bei A ankommt. Prinzipiell kann es aber überall vorkommen, wo ein Rechner nicht den kompletten Datenverkehr des Netzwerkes abhorchen kann.
+
+c) Man kann ein polling-Verfahren einführen, bei dem Rechner nur dann Daten an den Accesspoint senden dürfen, wenn sie "gefragt" wurden. Bei Funknetzen kann man auch einfach die versteckten Endgeräten wo anders hinschieben oder die Antennenleistung erhöhen :)
+
+
+
+
+
+
+
