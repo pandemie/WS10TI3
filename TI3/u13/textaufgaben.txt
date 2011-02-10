@@ -6,7 +6,7 @@ Gruppe O
 Dimitri Schachmann
 Marcel Jünemann
 
-*Aufgabe 1
+* Aufgabe 1
 
 Sie schreiben an mich eine E-Mail. Es passiert folgendes.
 ** Mail Client
@@ -41,7 +41,7 @@ Sie schreiben an mich eine E-Mail. Es passiert folgendes.
    aufgebaut und die Pakete in IP-Pakete verpackt. Das versteht sich
    aber mittlerweile von selbst.
 
-*Aufgabe 2
+* Aufgabe 2
         
 ** SYN-Flooding
    Wenn ein Client A eine TCP verbindung mit einem Server B aufbauen
@@ -63,4 +63,25 @@ Sie schreiben an mich eine E-Mail. Es passiert folgendes.
    assoziieren, die gar nicht meine sind. So kann ich vermden
    Datenverkehr über meinen Rechner lenken.
 
-** Sliding Window Mechanismus
+** Sliding Window Mechanismus (SWM)
+   Hierbei handelt es sich um eine Funktionalität von Daten Transfer
+   Protokollen. Ein Sender A schickt Pakete an Empfänger B. B schickt
+   für jedes Paket eine Bestätigung (ACK). Wenn A kein ACK emfängt,
+   dann schickt er das Paket nochmal. Das ist das Grundprinzip. Das
+   SWM ermöglicht es, dass A nicht nach jedem Paket auf ein ACK warten
+   muss. Es gibt bei SWM ein ein Fester von n Paketen. Jedes Paket
+   wird aufsteigend gezählt und zwar auf Sender und Emfpänger
+   Seite. Der Sender kann die n Pakete aus dem Fenster hinereinander
+   Senden. B schickt dann ACKs mit den nummern der Pakete, bis zu
+   denen alle angekommen sind. In dem Fester sind also all die Pakete,
+   von denen A und B nicht sicher wissen, ob sie angekommen sind. Wenn
+   A längere Zeit kein Ack bekommt, dass den Frame verschiebt, dann
+   sendet er erneut. SWM lastet den Kanal besser aus.
+
+* Aufgabe 3
+  Wenn wir 100 Byte in den TCP Strom schieben, dann würde TCP erst
+  warten, bis die MTU erreicht ist. Das ist effizient weil der
+  Overhead pro Byte gesenkt wird. Jedoch ist es oft notwendig sofort
+  zu sende. Beim chat z.B. will niemand erst einen Langen Text zu
+  tippen haben müssen, bevor seine Nachricht übertragen wird. Für ein
+  sofortiges Versenden bietet TCT die push Funktion an.
