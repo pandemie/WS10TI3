@@ -1,0 +1,66 @@
+
+
+
+TI III - Übung 13
+Gruppe O
+Dimitri Schachmann
+Marcel Jünemann
+
+*Aufgabe 1
+
+Sie schreiben an mich eine E-Mail. Es passiert folgendes.
+** Mail Client
+   Ihre Email wird dem E-Mail wird im klartext auf dem Recher
+   gespeichert.
+
+** Übertragung an einen SMPT Server
+   Sobald sie auf Send klicken, baut ihr Mail Client eine TCP
+   Verbindung mit einem SMTP server auf und schickt darüber ihre mail
+   Adresse (Absender), die Empfänger mail Andresse und die Nachricht in
+   Klartext. Ziwischendurch gibt der Server immer wieder eine
+   Bestätigung an den Client zurück. Nach dem Übertragen der Nachricht,
+   meldet sich Ihr client wieder ab.
+
+** MX-Record Anfrage
+   Der SMPT Server fragt bei einem DNS-Server (Über das DNS Protokol)
+   nach den Adressen von Mailservern, die die Domain in der Adresse
+   (zedat.fu-berli.de z.B.) des Empfängers behandeln können. Der
+   DNS-Server liefert eine Liste mit Servern (Mail eXchange record),
+   die sich für z.B. @zedat.fu-berlin.de verantwortlich fühlen.
+
+** Übertragung der Mail an den SMPT Server des Empfängers
+   Jetzt wird Ihre Mail von Ihrem SMTP-Server per SMTP an meinen
+   SMTP-Server übertragen.
+
+** POP3
+   Die Mail liegt nun auf meinem SMPT Server, bis ich sie mittels POP3
+   oder IMAP abhole.
+
+** Anmerkungen
+   Bei den ganzen Verbindungen wird immer jeweils eine TCP Verbindung
+   aufgebaut und die Pakete in IP-Pakete verpackt. Das versteht sich
+   aber mittlerweile von selbst.
+
+*Aufgabe 2
+        
+** SYN-Flooding
+   Wenn ein Client A eine TCP verbindung mit einem Server B aufbauen
+   will, dann schickt A ein SYN-Paket an B. B reserviert resourcen für
+   diese Verbindung und schickt ein ACK-Packet zurück. Das es sich aber
+   um einen drei-wege-hadshake handelt, wartet der B auch noch auf eine
+   Bestätigung von A. A jedoch kann so perfide sein und keine
+   Bestätigung schicken, sonder immer wieder nur SYN-Pakete. So wird B
+   überlastet, weil es unmengen an Resourcen reserviert, für
+   Verbindungen, die nie zustande kommen. Mit raw-sockets kann A
+   SYN-Pakete verschicken, ohne dass sein Betriebssystem irgendwelche
+   Resourcen reserviert.
+
+** ARP-Spoofing
+   Das ARP Protokoll wird dazu verwendet, um sich in einem Netzwerk
+   über die Zugehörigkeit von bestimmten IP Adressen zu bestimmten MAC
+   Adressen zu verständigen. Als Bösewicht, kann ich unaufgefordert
+   ARP-Pakete verschicken, die meine MAC-Adresse mit IP-Adressen
+   assoziieren, die gar nicht meine sind. So kann ich vermden
+   Datenverkehr über meinen Rechner lenken.
+
+** Sliding Window Mechanismus
